@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
-from babel.numbers import format_currency
+# from babel.numbers import format_currency
 
 sns.set_theme(style='dark')
 
@@ -101,7 +101,7 @@ with col1:
     st.metric("Total orders", value=total_orders)
 
 with col2:
-    total_revenue = format_currency(daily_orders_df.revenue.sum(), "AUD", locale='es_CO') 
+    total_revenue = daily_orders_df.revenue.sum()
     st.metric("Total Revenue", value=total_revenue)
 
 fig, ax = plt.subplots(figsize=(16, 8))
@@ -216,7 +216,7 @@ with col2:
     st.metric("Average Frequency", value=avg_frequency)
 
 with col3:
-    avg_frequency = format_currency(rfm_df.monetary.mean(), "AUD", locale='es_CO') 
+    avg_frequency = rfm_df.monetary.mean()
     st.metric("Average Monetary", value=avg_frequency)
 
 fig, ax = plt.subplots(nrows=1, ncols=3, figsize=(35, 15))
