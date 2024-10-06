@@ -49,8 +49,8 @@ def create_rfm_df(df):
     
     return rfm_df
 
-# Load cleaned data
-all_df = pd.read_csv("all_data.csv")
+# Load cleaned data from github
+all_df = pd.read_csv("https://github.com/aqsharhyz/ecommerce-public-dataset-analysis/blob/master/dashboard/all_data.csv?raw=true")
 
 datetime_columns = ["order_purchase_timestamp", "delivery_time"]
 all_df.sort_values(by="order_purchase_timestamp", inplace=True)
@@ -64,13 +64,6 @@ min_date = all_df["order_purchase_timestamp"].min()
 max_date = all_df["order_purchase_timestamp"].max()
 
 with st.sidebar:
-    # Menambahkan logo perusahaan
-    import os
-
-    image_path = "./preview.png"
-    if os.path.exists(image_path):
-        st.image(image_path, width=200)
-    
     # Mengambil start_date & end_date dari date_input
     start_date, end_date = st.date_input(
         label='Rentang Waktu',min_value=min_date,
